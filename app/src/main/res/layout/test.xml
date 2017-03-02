@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="15dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Задача"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18dp"
+        android:id="@+id/title1" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title1"
+        android:id="@+id/til_name">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/taskName"
+            android:hint="Название задачи" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/til_name"
+        android:id="@+id/til_text"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/taskText"
+            android:hint="Что должно быть сделано?"
+            android:gravity="top"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:text="Срок"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/til_text"
+        android:textSize="18dp"
+        android:id="@+id/title2" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title2"
+        android:id="@+id/ll1">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/til_date"
+            android:layout_height="wrap_content"
+            android:layout_weight="12">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Дата"
+                android:ems="10"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/taskDate"
+                android:textColor="@color/textColor"
+                android:focusable="false"
+                android:clickable="true"
+                android:onClick="showDateOrTimePicker"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_date_range_black_24dp"
+            android:layout_below="@+id/title2"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/til_date"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:id="@+id/showDatePicker"
+            android:clickable="true"
+            android:onClick="showDateOrTimePicker"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel_black_24dp"
+            android:layout_below="@+id/title2"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:paddingTop="10dp"
+            android:layout_toRightOf="@id/showDatePicker"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cleanDate"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:onClick="Clean"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll1"
+        android:id="@+id/ll2">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/til_time"
+            android:layout_height="wrap_content"
+            android:layout_weight="12">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Время"
+                android:textColor="@color/textColor"
+                android:ems="10"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/taskTime"
+                android:focusable="false"
+                android:clickable="true"
+                android:onClick="showDateOrTimePicker"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_access_time_black_24dp"
+            android:layout_below="@+id/til_date"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/til_time"
+            android:layout_marginTop="10dp"
+            android:id="@+id/showTimePicker"
+            android:paddingTop="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="showDateOrTimePicker" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel_black_24dp"
+            android:layout_below="@+id/til_date"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:paddingTop="10dp"
+            android:layout_toRightOf="@id/showTimePicker"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cleanTime"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="Clean" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ll3"
+        android:layout_below="@+id/ll2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:clickable="true"
+        android:onClick="checked">
+        <TextView
+            android:text="Уведомление"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18dp"/>
+        <TextView
+            android:text="Включено"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#555"
+            android:id="@+id/turnOff"
+            android:textSize="11dp"/>
+        </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="15dp"
+            android:id="@+id/checkBoxNotification"
+            android:layout_gravity="right"
+            android:paddingRight="5dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/repeat"
+        android:layout_below="@+id/ll3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone">
+            <TextView
+                android:text="Повтор"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_repeat"
+                android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>
