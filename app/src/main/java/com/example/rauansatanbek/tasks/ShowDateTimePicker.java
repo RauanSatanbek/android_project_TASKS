@@ -1,5 +1,6 @@
 package com.example.rauansatanbek.tasks;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -12,7 +13,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TimePicker;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ShowDateTimePicker extends DialogFragment implements AlertDialog.OnClickListener {
     View view;
@@ -20,11 +25,15 @@ public class ShowDateTimePicker extends DialogFragment implements AlertDialog.On
     ImageButton imageButton;
     final int DATE_PICKER = 1, TIME_PICKER = 2;
     int layout, picker;
-    ShowDateTimePicker(int layout, int picker, EditText etFromNewTask, ImageButton imageButton) {
+    Activity context;
+    ArrayList<Integer> arrayList;
+    ShowDateTimePicker(int layout, int picker, EditText etFromNewTask, ImageButton imageButton, ArrayList<Integer> arrayList, Activity context) {
         this.layout = layout;
         this.picker = picker;
         this.etFromNewTask = etFromNewTask;
         this.imageButton = imageButton;
+        this.context = context;
+        this.arrayList = arrayList;
     }
     public interface AddNewTask {
         void add(String title, String text);
@@ -59,12 +68,16 @@ public class ShowDateTimePicker extends DialogFragment implements AlertDialog.On
                         int year = datePicker.getYear();
                         int month = datePicker.getMonth() + 1;
                         int day = datePicker.getDayOfMonth();
+                        Collections.addAll(arrayList, day, month, year);
                         etFromNewTask.setText(addZero(day) + "." + addZero(month) + "." + year);
+                        LinearLayout ll_time = (LinearLayout) context.findViewById(R.id.ll_time);
+                        ll_time.setVisibility(View.VISIBLE);
                         break;
                     case TIME_PICKER:
                         TimePicker timePicker = (TimePicker) view.findViewById(R.id.timePicker);
                         int hour = timePicker.getCurrentHour();
                         int minute = timePicker.getCurrentMinute();
+                        Collections.addAll(arrayList, hour, minute);
                         etFromNewTask.setText(addZero(hour) + ":" + addZero(minute));
                         break;
                 }

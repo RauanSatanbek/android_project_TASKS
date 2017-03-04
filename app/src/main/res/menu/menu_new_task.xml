@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.rauansatanbek.tasks.NewTask">
     <item
-        android:id="@+id/addIcon"
+        android:id="@+id/addNewTask"
         android:icon="@drawable/ic_check_white_24dp"
         app:showAsAction="always"
         android:title="add"/>

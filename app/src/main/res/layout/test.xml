@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title2"
-        android:id="@+id/ll1">
+        android:id="@+id/ll_date">
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:id="@+id/til_date"
@@ -94,8 +94,7 @@
             android:paddingTop="10dp"
             android:id="@+id/showDatePicker"
             android:clickable="true"
-            android:onClick="showDateOrTimePicker"
-            android:layout_weight="1"/>
+            android:onClick="showDateOrTimePicker"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,9 +106,8 @@
             android:layout_toRightOf="@id/showDatePicker"
             android:layout_marginTop="10dp"
             android:id="@+id/cleanDate"
-            android:clickable="true"
             android:visibility="gone"
-            android:layout_weight="1"
+            android:clickable="true"
             android:onClick="Clean"/>
     </LinearLayout>
 
@@ -118,8 +116,9 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll1"
-        android:id="@+id/ll2">
+        android:layout_below="@+id/ll_date"
+        android:id="@+id/ll_time"
+        android:visibility="gone">
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:id="@+id/til_time"
@@ -152,7 +151,6 @@
             android:layout_marginTop="10dp"
             android:id="@+id/showTimePicker"
             android:paddingTop="10dp"
-            android:layout_weight="1"
             android:clickable="true"
             android:onClick="showDateOrTimePicker" />
 
@@ -168,7 +166,6 @@
             android:layout_marginTop="10dp"
             android:id="@+id/cleanTime"
             android:visibility="gone"
-            android:layout_weight="1"
             android:clickable="true"
             android:onClick="Clean" />
     </LinearLayout>
@@ -180,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/ll3"
-        android:layout_below="@+id/ll2"
+        android:layout_below="@+id/ll_time"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
     <LinearLayout
@@ -211,8 +208,7 @@
             android:layout_marginTop="15dp"
             android:id="@+id/checkBoxNotification"
             android:layout_gravity="right"
-            android:paddingRight="5dp"
-            android:layout_weight="1" />
+            android:clickable="false"/>
 
     </LinearLayout>
 
@@ -239,4 +235,15 @@
                 android:id="@+id/spinner_repeat"
                 android:layout_weight="1" />
     </LinearLayout>
+
+    <RadioButton
+        android:text="RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="59dp"
+        android:buttonTint="@color/success"
+        android:id="@+id/radioButton" />
 </RelativeLayout>

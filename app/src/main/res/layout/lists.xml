@@ -1,61 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<!--<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/CheckedTextView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minHeight="?android:attr/listPreferredItemHeight"-->
+    <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+    <!--android:textColor="?android:attr/textColorAlertDialogListItem"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:checkMark="?android:attr/listChoiceIndicatorSingle"-->
+    <!--android:ellipsize="marquee"-->
+    <!--tools:text="Hi"-->
+    <!--android:checkMarkTint="@color/success"-->
+    <!--android:paddingLeft="12dp"-->
+    <!--android:paddingRight="7dp" />-->
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp">
-        <TextView
-            android:text="Институт Благородных Роккерш"
-            android:textSize="20sp"
-            android:textColor="@color/buttonTC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/topic"/>
-
-        <TextView
-            android:text="два часа назад"
-            android:textSize="14sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
-            android:layout_marginBottom="-5dp" />
-
-        <TextView
-            android:text=""
-            android:textSize="16sp"
-            android:textColor="@color/textColor"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text"/>
-        <TextView
-            android:text="LOOK"
-            android:textColor="@color/buttonTC"
-            android:textSize="14sp"
-            android:layout_gravity="right"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"/>
-
-    </LinearLayout>
-    <TextView
-        android:background="#aaa"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-    <TextView
-        android:background="#ccc"
-        android:layout_width="match_parent"
-        android:layout_height="7dp" />
-
-</LinearLayout>
+    android:id="@+id/radioButtonColor"
+    android:text="Hi"
+    android:textSize="20sp"
+    android:padding="10dp"
+    android:background="@color/success"
+    android:textColor="#444">
+</TextView>
