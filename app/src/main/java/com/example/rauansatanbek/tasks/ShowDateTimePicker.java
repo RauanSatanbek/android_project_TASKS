@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,6 +59,7 @@ public class ShowDateTimePicker extends DialogFragment implements AlertDialog.On
         }
         return "" + number;
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(DialogInterface dialog, int which) {
         Log.d("MyLogs", "onClick which = " + which);
@@ -68,6 +71,7 @@ public class ShowDateTimePicker extends DialogFragment implements AlertDialog.On
                         int year = datePicker.getYear();
                         int month = datePicker.getMonth() + 1;
                         int day = datePicker.getDayOfMonth();
+                        Log.d("MyLogs", "first day of week = " + datePicker.getFirstDayOfWeek());
                         Collections.addAll(arrayList, day, month, year);
                         etFromNewTask.setText(addZero(day) + "." + addZero(month) + "." + year);
                         LinearLayout ll_time = (LinearLayout) context.findViewById(R.id.ll_time);
