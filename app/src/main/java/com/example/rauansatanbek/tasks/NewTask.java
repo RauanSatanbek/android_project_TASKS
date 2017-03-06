@@ -101,19 +101,8 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
                     RadioButton radioButton = (RadioButton) findViewById(colors.getCheckedRadioButtonId());
                     TextView spinner_tv = (TextView) spinner_repeat.getSelectedView();
                     String bg_color = radioButton.getTag().toString();
-                    TextView title1 = (TextView) findViewById(R.id.title1);
-                    TextView title2 = (TextView) findViewById(R.id.title2);
-                    TextView title3 = (TextView) findViewById(R.id.title3);
-                    TextView title4 = (TextView) findViewById(R.id.title4);
-                    TextView title5 = (TextView) findViewById(R.id.title5);
                     Log.d("MyLogs", nameOfTask + "\n" + textOfTask + "\n" + dateOfTask + "\n"
-                            + timeOfTask + "\n" + checkBox + "\n" + radioButton.getTag() + "\n" + spinner_tv.getText());
-                    int color = Color.parseColor(radioButton.getTag() + "");
-                    title1.setTextColor(color);
-                    title2.setTextColor(color);
-                    title3.setTextColor(color);
-                    title4.setTextColor(color);
-                    title5.setTextColor(color);
+                            + timeOfTask + "\n" + checkBox + "\n" + bg_color + "\n" + spinner_tv.getText());
                     if(nameOfTask.equals("") || textOfTask.equals("") || listForTaskDate.size() != 3 || listForTaskTime.size() != 2) {
                         Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG).show();
                     } else {

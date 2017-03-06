@@ -1,13 +1,12 @@
 package com.example.rauansatanbek.tasks;
 
-/**
- * Created by Rauan Satanbek on 17.02.2017.
- */
-
 public class Tasks {
-    String title, text;
-    Tasks(String title, String text) {
+    String title, text, bg_color, date, time;
+    Tasks(String title, String text, String bg_color, String date, String time) {
         this.title = title;
         this.text = text;
+        this.date = date;
+        this.time = time;
+        this.bg_color = bg_color;
     }
 }

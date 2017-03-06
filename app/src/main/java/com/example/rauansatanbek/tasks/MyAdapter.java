@@ -1,6 +1,8 @@
 package com.example.rauansatanbek.tasks;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        String color = "#d9534f";
+        if(position % 2 == 0) {
+            color = "#5cb85c";
+            holder.card_status.setText("Выполняется");
+        }
+        ((GradientDrawable)holder.card_title.getBackground()).setColor(Color.parseColor(tasks.get(position).bg_color));
+        ((GradientDrawable) holder.card_status.getBackground()).setColor(Color.parseColor(color));
         holder.card_title.setText(tasks.get(position).title);
+        holder.card_date.setText(tasks.get(position).date + " " + tasks.get(position).time);
         holder.card_text.setText(tasks.get(position).text);
 //        holder.removeTask.setTag(i);
         i++;
@@ -58,12 +68,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView card_title, card_text;
+        private TextView card_title, card_text, card_date, card_status;
         private ImageButton removeTask;
         ViewHolder(View v) {
             super(v);
             card_title = (TextView) v.findViewById(R.id.card_title);
             card_text = (TextView) v.findViewById(R.id.card_text);
+            card_date = (TextView) v.findViewById(R.id.card_date);
+            card_status = (TextView) v.findViewById(R.id.card_status);
 //            removeTask = (ImageButton) v.findViewById(R.id.removeTask);
         }
     }
