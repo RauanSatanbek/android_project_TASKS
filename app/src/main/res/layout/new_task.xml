@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:paddingTop="15dp"
@@ -13,7 +14,7 @@
         android:text="Задача"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/title_color"
         android:textSize="18dp"
         android:id="@+id/title1" />
 
@@ -49,117 +50,267 @@
         android:text="Срок"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/title_color"
         android:layout_below="@+id/til_text"
         android:textSize="18dp"
         android:id="@+id/title2" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="wrap_content"
-        android:id="@+id/til_date"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/title2"
-        android:layout_height="wrap_content">
-        <EditText
+        android:id="@+id/ll_date">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/til_date"
+            android:layout_height="wrap_content"
+            android:layout_weight="12">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Дата"
+                android:ems="10"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/taskDate"
+                android:textColor="@color/textColor"
+                android:focusable="false"
+                android:clickable="true"
+                android:onClick="showDateOrTimePicker"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Дата"
-            android:ems="10"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/taskDate"
-            android:textColor="@color/textColor"
-            android:focusable="false"
+            app:srcCompat="@drawable/ic_date_range"
+            android:layout_below="@+id/title2"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/til_date"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:id="@+id/showDatePicker"
             android:clickable="true"
             android:onClick="showDateOrTimePicker"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_date_range_black_24dp"
-        android:layout_below="@+id/title2"
-        android:background="@null"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toRightOf="@id/til_date"
-        android:layout_marginTop="10dp"
-        android:paddingTop="10dp"
-        android:id="@+id/showDatePicker"
-        android:clickable="true"
-        android:onClick="showDateOrTimePicker"/>
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_cancel_black_24dp"
-        android:layout_below="@+id/title2"
-        android:background="@null"
-        android:layout_marginRight="5dp"
-        android:paddingTop="10dp"
-        android:layout_toRightOf="@id/showDatePicker"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:id="@+id/cleanDate"
-        android:clickable="true"
-        android:onClick="Clean"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="wrap_content"
-        android:id="@+id/til_time"
-        android:layout_below="@+id/til_date"
-        android:layout_height="wrap_content">
-        <EditText
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Время"
-            android:textColor="@color/textColor"
-            android:ems="10"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/taskTime"
-            android:focusable="false"
+            app:srcCompat="@drawable/ic_cancel"
+            android:layout_below="@+id/title2"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:paddingTop="10dp"
+            android:layout_toRightOf="@id/showDatePicker"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cleanDate"
+            android:visibility="gone"
             android:clickable="true"
-            android:onClick="showDateOrTimePicker"/>
-    </android.support.design.widget.TextInputLayout>
+            android:onClick="Clean"/>
+    </LinearLayout>
 
-    <ImageButton
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_access_time_black_24dp"
-        android:layout_below="@+id/til_date"
-        android:background="@null"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toRightOf="@id/til_time"
+        android:layout_below="@+id/ll_date"
+        android:id="@+id/ll_time"
+        android:visibility="gone">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/til_time"
+            android:layout_height="wrap_content"
+            android:layout_weight="12">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Время"
+                android:textColor="@color/textColor"
+                android:ems="10"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/taskTime"
+                android:focusable="false"
+                android:clickable="true"
+                android:onClick="showDateOrTimePicker"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_access_time"
+            android:layout_below="@+id/til_date"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/til_time"
+            android:layout_marginTop="10dp"
+            android:id="@+id/showTimePicker"
+            android:paddingTop="10dp"
+            android:clickable="true"
+            android:onClick="showDateOrTimePicker" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cancel"
+            android:layout_below="@+id/til_date"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:paddingTop="10dp"
+            android:layout_toRightOf="@id/showTimePicker"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cleanTime"
+            android:visibility="gone"
+            android:clickable="true"
+            android:onClick="Clean" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:id="@+id/showTimePicker"
-        android:paddingTop="10dp"
-        android:clickable="true"
-        android:onClick="showDateOrTimePicker" />
-    <ImageButton
-        android:layout_width="wrap_content"
+        android:id="@+id/ll3"
+        android:layout_below="@+id/ll_time"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:clickable="true"
+            android:onClick="checked">
+            <TextView
+                android:text="Уведомление"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_color"
+                android:textSize="18dp"
+                android:id="@+id/title3" />
+            <TextView
+                android:text="Включено"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:id="@+id/turnOff"
+                android:textSize="11dp"/>
+        </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:layout_marginTop="15dp"
+            android:id="@+id/checkBoxNotification"
+            android:layout_gravity="right"
+            android:clickable="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_cancel_black_24dp"
-        android:layout_below="@+id/til_date"
-        android:background="@null"
-        android:layout_marginRight="5dp"
-        android:paddingTop="10dp"
-        android:layout_toRightOf="@id/showTimePicker"
         android:layout_marginTop="10dp"
-        android:id="@+id/cleanTime"
-        android:visibility="gone"
-        android:clickable="true"
-        android:onClick="Clean" />
+        android:id="@+id/repeat"
+        android:layout_below="@+id/ll3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:text="Повтор"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:id="@+id/title4" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_repeat"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <CheckBox
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18dp"
-        android:text="Уведомление"
-        android:layout_marginTop="15dp"
-        android:id="@+id/checkBoxNotification"
-        android:layout_below="@+id/showTimePicker" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/repeat">
 
+        <TextView
+            android:text="Цвет фона"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_color"
+            android:textSize="18dp"
+            android:id="@+id/title5" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:id="@+id/colors"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/light_gray"
+                style="@style/rb_default"
+                android:id="@+id/rb_default"
+                android:checked="true"
+                android:tag="#ffffff"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                style="@style/rb_primary"
+                android:id="@+id/rb_primary"
+                android:tag="@color/primary"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/success"
+                android:tag="@color/success"
+                android:gravity="center"
+                style="@style/rb_success"
+                android:id="@+id/rb_success"
+                android:layout_weight="1" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/info"
+                android:tag="@color/info"
+                style="@style/rb_info"
+                android:id="@+id/rb_info"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/warning"
+                android:tag="@color/warning"
+                style="@style/rb_warning"
+                android:id="@+id/rb_warning"
+                android:layout_weight="1" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/danger"
+                android:tag="@color/danger"
+                style="@style/rb_danger"
+                android:id="@+id/rb_danger"
+                android:layout_weight="1" />
+        </RadioGroup>
+    </LinearLayout>
 </RelativeLayout>

@@ -22,7 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/test" />
+    <include layout="@layout/new_task" />
 
 
 

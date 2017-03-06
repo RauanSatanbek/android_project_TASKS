@@ -19,6 +19,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,10 +31,11 @@ import java.util.List;
 public class NewTask extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     EditText taskDate, taskTime, taskName, taskText;
     ImageButton cleanTime, cleanDate;
-    CheckBox checkBoxNotification;
     TextView notification, turnOff;
     final int DATE_PICKER = 1, TIME_PICKER = 2;
     Spinner spinner_repeat;
+    RadioGroup colors;
+    CheckBox checkBoxNotification;
     LinearLayout repeat, ll_time;
     ArrayList<Integer> listForTaskDate, listForTaskTime;
     @Override
@@ -55,6 +58,7 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
             taskTime = (EditText) findViewById(R.id.taskTime);
             taskName = (EditText) findViewById(R.id.taskName);
             taskText = (EditText) findViewById(R.id.taskText);
+            colors = (RadioGroup) findViewById(R.id.colors);
         // used to clean date || time
             cleanTime = (ImageButton) findViewById(R.id.cleanTime);
             cleanDate = (ImageButton) findViewById(R.id.cleanDate);
@@ -92,6 +96,23 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
                 case R.id.addNewTask:
                     String nameOfTask = taskName.getText().toString();
                     String textOfTask = taskText.getText().toString();
+                    String dateOfTask = taskDate.getText().toString();
+                    String timeOfTask = taskTime.getText().toString();
+                    boolean checkBox = checkBoxNotification.isChecked();
+                    RadioButton radioButton = (RadioButton) findViewById(colors.getCheckedRadioButtonId());
+                    TextView title1 = (TextView) findViewById(R.id.title1);
+                    TextView title2 = (TextView) findViewById(R.id.title2);
+                    TextView title3 = (TextView) findViewById(R.id.title3);
+                    TextView title4 = (TextView) findViewById(R.id.title4);
+                    TextView title5 = (TextView) findViewById(R.id.title5);
+                    Log.d("MyLogs", nameOfTask + "\n" + textOfTask + "\n" + dateOfTask + "\n"
+                            + timeOfTask + "\n" + checkBox + "\n" + radioButton.getTag());
+                    int color = Color.parseColor(radioButton.getTag() + "");
+                    title1.setTextColor(color);
+                    title2.setTextColor(color);
+                    title3.setTextColor(color);
+                    title4.setTextColor(color);
+                    title5.setTextColor(color);
                     if(nameOfTask.equals("") || textOfTask.equals("") || listForTaskDate.size() != 3 || listForTaskTime.size() != 2) {
                         Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG).show();
                     } else {
