@@ -66,10 +66,7 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
         //Spinner - start
             spinner_repeat = (Spinner) findViewById(R.id.spinner_repeat);
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-            R.array.planets_array, android.R.layout.simple_spinner_item);
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("Hi");
-        list.add("Bro");
+            R.array.planets_array, R.layout.simple_spinner_item);
 //        CustomListAdapter adapter = new CustomListAdapter(this, R.layout.lists, list);
             // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

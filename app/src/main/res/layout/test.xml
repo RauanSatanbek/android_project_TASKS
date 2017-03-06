@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:paddingTop="15dp"
@@ -213,15 +214,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/repeat"
         android:layout_below="@+id/ll3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:visibility="gone">
+        android:layout_alignParentStart="true">
             <TextView
                 android:text="Повтор"
                 android:layout_width="match_parent"
@@ -230,20 +230,78 @@
                 android:textSize="18dp"
                 android:layout_weight="1"/>
             <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner_repeat"
                 android:layout_weight="1" />
     </LinearLayout>
 
-    <RadioButton
-        android:text="RadioButton"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="59dp"
-        android:buttonTint="@color/success"
-        android:id="@+id/radioButton" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/repeat">
+
+        <TextView
+            android:text="Цвет фона"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18dp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/light_gray"
+                style="@style/rb_default"
+                android:id="@+id/rb_default"
+                android:checked="true"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                style="@style/rb_primary"
+                android:id="@+id/rb_primary"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/success"
+                android:gravity="center"
+                style="@style/rb_success"
+                android:id="@+id/rb_success"
+                android:layout_weight="1" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/info"
+                style="@style/rb_info"
+                android:id="@+id/rb_info"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/warning"
+                style="@style/rb_warning"
+                android:id="@+id/rb_warning"
+                android:layout_weight="1" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/danger"
+                style="@style/rb_danger"
+                android:id="@+id/rb_danger"
+                android:layout_weight="1" />
+        </RadioGroup>
+
+    </LinearLayout>
 </RelativeLayout>
